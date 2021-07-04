@@ -1,10 +1,17 @@
-selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-palvelin-->selain: {"message":"note created"}
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+palvelin-->selain: HTML-koodi
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+palvelin-->selain: main.css
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+palvelin-->selain: spa.js
 
 note over selain:
-selain lähetti teksikentän 
-sisällön palvelimelle POST-komennolla
+selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta
 end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+palvelin-->selain: [{"content":"","date":"2021-07-04T09:42:07.793Z"}, ... ]
 
 note over selain:
 selain suorittaa tapahtumankäsittelijän
